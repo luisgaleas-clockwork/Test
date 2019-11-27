@@ -1,10 +1,15 @@
+require('dotenv').config()
 var mongoose = require("mongoose");
 var db = require("../models");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/imageperformance", {
-  useNewUrlParser: true
-});
+const uri = process.env.ATLAS_URI
 
+mongoose.connect(uri, {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true
+}
+);
 var imageSeed = [
   {
     description: "Day At The Library",
